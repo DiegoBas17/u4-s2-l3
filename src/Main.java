@@ -83,8 +83,9 @@ public class Main {
         System.out.println("----------------------------es4-----------------------------------------");
         List<Product> tier2 = totalOrders.stream()
                 .filter(order -> order.getCustomer().getTier() == 2)
-                .map(order -> order.getProducts().stream())
+                .flatMap(order -> order.getProducts().stream())
                 .toList();
+
         tier2.forEach(System.out::println);
     }
 }
